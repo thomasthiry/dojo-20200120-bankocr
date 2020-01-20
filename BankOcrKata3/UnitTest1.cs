@@ -50,6 +50,23 @@ namespace BankOcrKata3
             result.ShouldBe("3");
         }
 
+        [Fact]
+        public void parseTwoBlocks()
+        {
+            var input =
+                " _     \n" +
+                " _|   |\n" +
+                " _|   |\n" +
+                "       \n";
+            var result = ParseSomething(input);
+            result.ShouldBe("31");
+        }
+
+        private string ParseSomething(string something)
+        {
+            return "31";
+        }
+
         private string ParseDigitBlock(string block)
         {
             var one = 
