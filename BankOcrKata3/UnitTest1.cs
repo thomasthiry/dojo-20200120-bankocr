@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Shouldly;
 using Xunit;
 
@@ -52,23 +53,19 @@ namespace BankOcrKata3
         private string ParseDigit(string input)
         {
             var one = "    \n" +
-                            "   |\n" +
-                            "   |\n" +
-                            "    \n";
+                      "   |\n" +
+                      "   |\n" +
+                      "    \n";
 
             var two = " _ \n" +
-                            " _|\n" +
-                            "|_ \n" +
-                            "   \n";
-            
-            if (input == one)
-            {
-                return "1";
-            }
+                      " _|\n" +
+                      "|_ \n" +
+                      "   \n";
+            var digits = new Dictionary<string, string> {{one, "1"}, {two, "2"}};
 
-            if (input == two)
+            if (digits.ContainsKey(input))
             {
-                return "2";
+                return digits[input];
             }
 
             return "3";
