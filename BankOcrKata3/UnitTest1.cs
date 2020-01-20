@@ -125,10 +125,10 @@ namespace BankOcrKata3
         private static string ExtractBlock(string[] lines, int blockIndex)
         {
             var digitBlock = new string[4];
-            digitBlock[0] = lines[0].Substring(blockIndex * BlockWidth, BlockWidth);
-            digitBlock[1] = lines[1].Substring(blockIndex * BlockWidth, BlockWidth);
-            digitBlock[2] = lines[2].Substring(blockIndex * BlockWidth, BlockWidth);
-            digitBlock[3] = lines[3].Substring(blockIndex * BlockWidth, BlockWidth);
+            for (int lineIndex = 0; lineIndex < 4; lineIndex++)
+            {
+                digitBlock[lineIndex] = lines[lineIndex].Substring(blockIndex * BlockWidth, BlockWidth);
+            }
             return string.Join("\n", digitBlock) + "\n";
         }
 
