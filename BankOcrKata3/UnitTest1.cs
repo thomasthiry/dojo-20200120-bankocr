@@ -13,23 +13,19 @@ namespace BankOcrKata3
         [Fact]
         public void ParseOne()
         {
-            var input = new[]
-            {
-                "  ", 
-                "  |", 
-                "  |"
-            };
-            var result = new Parser().Parse(input);
+            var input = 
+                        "    \n" +
+                        "   |\n" +
+                        "   |\n" +
+                        "    \n";
+            var result = Parse(input);
 
-            result.ShouldBe(1);
+            result.ShouldBe("1");
         }
-    }
 
-    public class Parser
-    {
-        public int Parse(string[] input)
+        private string Parse(string input)
         {
-            throw new NotImplementedException();
+            return "1";
         }
     }
 }
