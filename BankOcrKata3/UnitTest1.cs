@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Shouldly;
 using Xunit;
 
@@ -55,14 +53,14 @@ namespace BankOcrKata3
         }
 
         [Fact]
-        public void parseTwoBlocks()
+        public void ParseTwoBlocks()
         {
             var input =
                 " _    \n" +
                 " _|  |\n" +
                 " _|  |\n" +
                 "      \n";
-            var result = ParseSomething(input);
+            var result = ParseToBankAccount(input);
             result.ShouldBe("31");
         }
 
@@ -86,7 +84,7 @@ namespace BankOcrKata3
         }
 
         [Fact]
-        public void splitTwoBlocks()
+        public void SplitTwoBlocks()
         {
             var input =
                 " _    \n" +
@@ -114,7 +112,7 @@ namespace BankOcrKata3
             var numberOfBlocks = NumberOfBlocks(lines);
             var blocks = new string[numberOfBlocks];
 
-            for (int blockIndex = 0; blockIndex < numberOfBlocks; blockIndex++)
+            for (var blockIndex = 0; blockIndex < numberOfBlocks; blockIndex++)
             {
                 blocks[blockIndex] = ExtractBlock(lines, blockIndex);
             }
@@ -142,9 +140,9 @@ namespace BankOcrKata3
             return string.Join("\n", digitBlock) + "\n";
         }
 
-        private string ParseSomething(string something)
+        private string ParseToBankAccount(string entry)
         {
-            var blocks = SplitIntoBlocks(something);
+            var blocks = SplitIntoBlocks(entry);
             var bankAccount = "";
 
             foreach (var block in blocks)
