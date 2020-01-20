@@ -13,7 +13,7 @@ namespace BankOcrKata3
         [Fact]
         public void ParseOne()
         {
-            var input = 
+            var input =
                         "    \n" +
                         "   |\n" +
                         "   |\n" +
@@ -26,7 +26,7 @@ namespace BankOcrKata3
         [Fact]
         public void ParseTwo()
         {
-            var input = 
+            var input =
                 " _ \n" +
                 " _|\n" +
                 "|_ \n" +
@@ -38,9 +38,11 @@ namespace BankOcrKata3
 
         private string Parse(string input)
         {
-            var firstLine = input.Split('\n')[0];
-
-            if (isEmptyLine(firstLine))
+            var one = "    \n" +
+                            "   |\n" +
+                            "   |\n" +
+                            "    \n";
+            if (input == one)
             {
                 return "1";
             }
