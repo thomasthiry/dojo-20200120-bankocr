@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Shouldly;
 using Xunit;
 
@@ -63,13 +64,13 @@ namespace BankOcrKata3
         }
 
         [Fact]
-        public void splitTwoBlocks()
+        public void splitOneBlocks()
         {
             var input =
-                " _     \n" +
-                " _|   |\n" +
-                " _|   |\n" +
-                "       \n";
+                " _ \n" +
+                " _|\n" +
+                " _|\n" +
+                "   \n";
             var result = SplitIntoBlocks(input);
 
             result.ShouldBe(new []
@@ -77,26 +78,27 @@ namespace BankOcrKata3
                 " _ " +
                 " _|" +
                 " _|" +
-                "   ",
-                "   " +
-                "  |" +
-                "  |" +
                 "   "
             });
         }
 
         private string[] SplitIntoBlocks(string entry)
         {
-            return new[] {
-                " _ " +
-                " _|" +
-                " _|" +
-                "   ",
-                "   " +
-                "  |" +
-                "  |" +
-                "   "
-            } ;
+            var lines = entry.Split('\n');
+
+            var blocks = new string[1];
+
+            for (int i = 0; i < 1; i++)
+            {
+                var digitBlock = new string[4];
+                digitBlock[0] = lines[0].Substring(i * 3, 3);
+                digitBlock[1] = lines[1].Substring(i * 3, 3);
+                digitBlock[2] = lines[2].Substring(i * 3, 3);
+                digitBlock[3] = lines[3].Substring(i * 3, 3);
+                blocks[i] = string.Join("", digitBlock);
+            }
+
+            return blocks;
         }
 
         private string ParseSomething(string something)
