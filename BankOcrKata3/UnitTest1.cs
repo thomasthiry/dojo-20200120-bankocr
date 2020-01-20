@@ -23,9 +23,34 @@ namespace BankOcrKata3
             result.ShouldBe("1");
         }
 
+        [Fact]
+        public void ParseTwo()
+        {
+            var input = 
+                " _ \n" +
+                " _|\n" +
+                "|_ \n" +
+                "   \n";
+            var result = Parse(input);
+
+            result.ShouldBe("2");
+        }
+
         private string Parse(string input)
         {
-            return "1";
+            var firstLine = input.Split('\n')[0];
+
+            if (isEmptyLine(firstLine))
+            {
+                return "1";
+            }
+
+            return "2";
+        }
+
+        private static bool isEmptyLine(string line)
+        {
+            return line == "    ";
         }
     }
 }
