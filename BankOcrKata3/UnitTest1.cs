@@ -19,7 +19,7 @@ namespace BankOcrKata3
                         "   |\n" +
                         "   |\n" +
                         "    \n";
-            var result = ParseDigit(input);
+            var result = ParseDigitBlock(input);
 
             result.ShouldBe("1");
         }
@@ -32,7 +32,7 @@ namespace BankOcrKata3
                 " _|\n" +
                 "|_ \n" +
                 "   \n";
-            var result = ParseDigit(input);
+            var result = ParseDigitBlock(input);
 
             result.ShouldBe("2");
         }
@@ -45,27 +45,29 @@ namespace BankOcrKata3
                 " _|\n" +
                 " _|\n" +
                 "   \n";
-            var result = ParseDigit(input);
+            var result = ParseDigitBlock(input);
 
             result.ShouldBe("3");
         }
 
-        private string ParseDigit(string input)
+        private string ParseDigitBlock(string block)
         {
-            var one = "    \n" +
+            var one = 
+                      "    \n" +
                       "   |\n" +
                       "   |\n" +
                       "    \n";
 
-            var two = " _ \n" +
+            var two =
+                      " _ \n" +
                       " _|\n" +
                       "|_ \n" +
                       "   \n";
-            var digits = new Dictionary<string, string> {{one, "1"}, {two, "2"}};
+            var blockToDigit = new Dictionary<string, string> {{one, "1"}, {two, "2"}};
 
-            if (digits.ContainsKey(input))
+            if (blockToDigit.TryGetValue(block, out var digit))
             {
-                return digits[input];
+                return digit;
             }
 
             return "3";
