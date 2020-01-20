@@ -19,10 +19,10 @@ namespace BankOcrKata3
         public void ParseOne()
         {
             var input =
-                        "    \n" +
-                        "   |\n" +
-                        "   |\n" +
-                        "    \n";
+                        "   \n" +
+                        "  |\n" +
+                        "  |\n" +
+                        "   \n";
             var result = ParseDigitBlock(input);
 
             result.ShouldBe("1");
@@ -58,10 +58,10 @@ namespace BankOcrKata3
         public void parseTwoBlocks()
         {
             var input =
-                " _     \n" +
-                " _|   |\n" +
-                " _|   |\n" +
-                "       \n";
+                " _    \n" +
+                " _|  |\n" +
+                " _|  |\n" +
+                "      \n";
             var result = ParseSomething(input);
             result.ShouldBe("31");
         }
@@ -144,16 +144,23 @@ namespace BankOcrKata3
 
         private string ParseSomething(string something)
         {
+            var blocks = SplitIntoBlocks(something);
+
+            foreach (var block in blocks)
+            {
+                ParseDigitBlock(block);
+            }
+
             return "31";
         }
 
         private string ParseDigitBlock(string block)
         {
             var one = 
-                      "    \n" +
-                      "   |\n" +
-                      "   |\n" +
-                      "    \n";
+                      "   \n" +
+                      "  |\n" +
+                      "  |\n" +
+                      "   \n";
 
             var two =
                       " _ \n" +
