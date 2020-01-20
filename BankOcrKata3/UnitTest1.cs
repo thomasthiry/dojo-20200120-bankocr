@@ -63,14 +63,16 @@ namespace BankOcrKata3
                       " _|\n" +
                       "|_ \n" +
                       "   \n";
-            var blockToDigit = new Dictionary<string, string> {{one, "1"}, {two, "2"}};
 
-            if (blockToDigit.TryGetValue(block, out var digit))
-            {
-                return digit;
-            }
+            var three =
+                " _ \n" +
+                " _|\n" +
+                " _|\n" +
+                "   \n";
 
-            return "3";
+            var blockToDigit = new Dictionary<string, string> {{one, "1"}, {two, "2"}, {three, "3"}};
+
+            return blockToDigit[block];
         }
     }
 }
