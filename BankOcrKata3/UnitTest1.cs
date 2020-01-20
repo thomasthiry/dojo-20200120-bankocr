@@ -75,10 +75,10 @@ namespace BankOcrKata3
 
             result.ShouldBe(new []
             {
-                " _ " +
-                " _|" +
-                " _|" +
-                "   "
+                " _ \n" +
+                " _|\n" +
+                " _|\n" +
+                "   \n"
             });
         }
 
@@ -95,7 +95,7 @@ namespace BankOcrKata3
                 digitBlock[1] = lines[1].Substring(i * 3, 3);
                 digitBlock[2] = lines[2].Substring(i * 3, 3);
                 digitBlock[3] = lines[3].Substring(i * 3, 3);
-                blocks[i] = string.Join("", digitBlock);
+                blocks[i] = string.Join("\n", digitBlock) + "\n";
             }
 
             return blocks;
