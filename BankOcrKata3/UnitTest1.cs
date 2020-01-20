@@ -62,6 +62,34 @@ namespace BankOcrKata3
             result.ShouldBe("31");
         }
 
+        [Fact]
+        public void splitTwoBlocks()
+        {
+            var input =
+                " _     \n" +
+                " _|   |\n" +
+                " _|   |\n" +
+                "       \n";
+            var result = SplitSomething(input);
+
+            result.ShouldBe(new []
+            {
+                " _ " +
+                " _|" +
+                " _|" +
+                "   ",
+                "   " +
+                "  |" +
+                "  |" +
+                "   "
+            });
+        }
+
+        private string[] SplitSomething(string input)
+        {
+            return new[] { ""};
+        }
+
         private string ParseSomething(string something)
         {
             return "31";
