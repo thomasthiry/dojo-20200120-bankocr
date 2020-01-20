@@ -36,18 +36,42 @@ namespace BankOcrKata3
             result.ShouldBe("2");
         }
 
+        [Fact]
+        public void ParseThree()
+        {
+            var input =
+                " _ \n" +
+                " _|\n" +
+                " _|\n" +
+                "   \n";
+            var result = ParseDigit(input);
+
+            result.ShouldBe("3");
+        }
+
         private string ParseDigit(string input)
         {
             var one = "    \n" +
                             "   |\n" +
                             "   |\n" +
                             "    \n";
+
+            var two = " _ \n" +
+                            " _|\n" +
+                            "|_ \n" +
+                            "   \n";
+            
             if (input == one)
             {
                 return "1";
             }
 
-            return "2";
+            if (input == two)
+            {
+                return "2";
+            }
+
+            return "3";
         }
     }
 }
