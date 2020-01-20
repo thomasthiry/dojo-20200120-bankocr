@@ -18,7 +18,7 @@ namespace BankOcrKata3
                         "   |\n" +
                         "   |\n" +
                         "    \n";
-            var result = Parse(input);
+            var result = ParseDigit(input);
 
             result.ShouldBe("1");
         }
@@ -31,12 +31,12 @@ namespace BankOcrKata3
                 " _|\n" +
                 "|_ \n" +
                 "   \n";
-            var result = Parse(input);
+            var result = ParseDigit(input);
 
             result.ShouldBe("2");
         }
 
-        private string Parse(string input)
+        private string ParseDigit(string input)
         {
             var one = "    \n" +
                             "   |\n" +
