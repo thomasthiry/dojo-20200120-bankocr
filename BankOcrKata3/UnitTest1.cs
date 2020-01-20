@@ -13,6 +13,7 @@ namespace BankOcrKata3
     public class UnitTest1
     {
         private const int BlockWidth = 3;
+        private const int BlockHeight = 4;
 
         [Fact]
         public void ParseOne()
@@ -124,8 +125,8 @@ namespace BankOcrKata3
 
         private static string ExtractBlock(string[] lines, int blockIndex)
         {
-            var digitBlock = new string[4];
-            for (int lineIndex = 0; lineIndex < 4; lineIndex++)
+            var digitBlock = new string[BlockHeight];
+            for (int lineIndex = 0; lineIndex < BlockHeight; lineIndex++)
             {
                 digitBlock[lineIndex] = lines[lineIndex].Substring(blockIndex * BlockWidth, BlockWidth);
             }
