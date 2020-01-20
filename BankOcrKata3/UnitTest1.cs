@@ -82,6 +82,29 @@ namespace BankOcrKata3
             });
         }
 
+        [Fact]
+        public void splitTwoBlocks()
+        {
+            var input =
+                " _     \n" +
+                " _|   |\n" +
+                " _|   |\n" +
+                "       \n";
+            var result = SplitIntoBlocks(input);
+
+            result.ShouldBe(new []
+            {
+                " _ \n" +
+                " _|\n" +
+                " _|\n" +
+                "   \n",
+                "   \n" +
+                "  |\n" +
+                "  |\n" +
+                "   \n"
+            });
+        }
+
         private string[] SplitIntoBlocks(string entry)
         {
             var lines = entry.Split('\n');
