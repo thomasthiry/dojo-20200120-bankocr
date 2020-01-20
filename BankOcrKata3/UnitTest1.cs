@@ -70,7 +70,7 @@ namespace BankOcrKata3
                 " _|   |\n" +
                 " _|   |\n" +
                 "       \n";
-            var result = SplitSomething(input);
+            var result = SplitIntoBlocks(input);
 
             result.ShouldBe(new []
             {
@@ -85,9 +85,18 @@ namespace BankOcrKata3
             });
         }
 
-        private string[] SplitSomething(string input)
+        private string[] SplitIntoBlocks(string entry)
         {
-            return new[] { ""};
+            return new[] {
+                " _ " +
+                " _|" +
+                " _|" +
+                "   ",
+                "   " +
+                "  |" +
+                "  |" +
+                "   "
+            } ;
         }
 
         private string ParseSomething(string something)
