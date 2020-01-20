@@ -145,13 +145,14 @@ namespace BankOcrKata3
         private string ParseSomething(string something)
         {
             var blocks = SplitIntoBlocks(something);
+            var bankAccount = "";
 
             foreach (var block in blocks)
             {
-                ParseDigitBlock(block);
+                bankAccount += ParseDigitBlock(block);
             }
 
-            return "31";
+            return bankAccount;
         }
 
         private string ParseDigitBlock(string block)
