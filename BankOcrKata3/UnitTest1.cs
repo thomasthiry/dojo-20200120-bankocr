@@ -12,6 +12,8 @@ namespace BankOcrKata3
 
     public class UnitTest1
     {
+        private const int BlockWidth = 3;
+
         [Fact]
         public void ParseOne()
         {
@@ -109,24 +111,24 @@ namespace BankOcrKata3
         {
             var lines = entry.Split('\n');
 
-            var numberOfDigits = lines[0].Length / 3;
+            var numberOfDigits = lines[0].Length / BlockWidth;
             var blocks = new string[numberOfDigits];
 
-            for (int i = 0; i < numberOfDigits; i++)
+            for (int blockIndex = 0; blockIndex < numberOfDigits; blockIndex++)
             {
-                blocks[i] = ExtractBlock(lines, i);
+                blocks[blockIndex] = ExtractBlock(lines, blockIndex);
             }
 
             return blocks;
         }
 
-        private static string ExtractBlock(string[] lines, int i)
+        private static string ExtractBlock(string[] lines, int blockIndex)
         {
             var digitBlock = new string[4];
-            digitBlock[0] = lines[0].Substring(i * 3, 3);
-            digitBlock[1] = lines[1].Substring(i * 3, 3);
-            digitBlock[2] = lines[2].Substring(i * 3, 3);
-            digitBlock[3] = lines[3].Substring(i * 3, 3);
+            digitBlock[0] = lines[0].Substring(blockIndex * BlockWidth, BlockWidth);
+            digitBlock[1] = lines[1].Substring(blockIndex * BlockWidth, BlockWidth);
+            digitBlock[2] = lines[2].Substring(blockIndex * BlockWidth, BlockWidth);
+            digitBlock[3] = lines[3].Substring(blockIndex * BlockWidth, BlockWidth);
             return string.Join("\n", digitBlock) + "\n";
         }
 
