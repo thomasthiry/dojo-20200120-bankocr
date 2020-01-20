@@ -110,17 +110,26 @@ namespace BankOcrKata3
 
         private string[] SplitIntoBlocks(string entry)
         {
-            var lines = entry.Split('\n');
+            var lines = SplitIntoLines(entry);
+            var numberOfBlocks = NumberOfBlocks(lines);
+            var blocks = new string[numberOfBlocks];
 
-            var numberOfDigits = lines[0].Length / BlockWidth;
-            var blocks = new string[numberOfDigits];
-
-            for (int blockIndex = 0; blockIndex < numberOfDigits; blockIndex++)
+            for (int blockIndex = 0; blockIndex < numberOfBlocks; blockIndex++)
             {
                 blocks[blockIndex] = ExtractBlock(lines, blockIndex);
             }
 
             return blocks;
+        }
+
+        private int NumberOfBlocks(string[] lines)
+        {
+            return lines[0].Length / BlockWidth;
+        }
+
+        private string[] SplitIntoLines(string entry)
+        {
+            return entry.Split('\n');
         }
 
         private static string ExtractBlock(string[] lines, int blockIndex)
