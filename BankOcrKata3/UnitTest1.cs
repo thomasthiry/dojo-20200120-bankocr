@@ -49,10 +49,5 @@ namespace BankOcrKata3
 
             return "2";
         }
-
-        private static bool isEmptyLine(string line)
-        {
-            return line == "    ";
-        }
     }
 }
